@@ -33,9 +33,7 @@ public class DocumentUploadService {
     public void upload(MultipartFile file)
             throws Exception {
 
-        String content =
-                pdfService.extract(file);
-        
+        String content =pdfService.extract(file);
         float[]  embedding = embeddingService.createEmbedding(content);
         
         System.out.println("------------------------embedding String------------------------------------------");

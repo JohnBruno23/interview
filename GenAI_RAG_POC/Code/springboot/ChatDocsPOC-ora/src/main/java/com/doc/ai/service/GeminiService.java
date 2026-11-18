@@ -11,6 +11,9 @@ import com.google.genai.types.GenerateContentResponse;
 public class GeminiService {
 
     private final Client client;
+    
+    @Value("${gemini.model}")
+    private String model;
 
     public GeminiService(
             @Value("${gemini.api.key}") String apiKey) {
@@ -26,7 +29,7 @@ public class GeminiService {
 
             GenerateContentResponse response =
                     client.models.generateContent(
-                            "gemini-3.8-flash",
+                    		model,
                             prompt,
                             null);
 
