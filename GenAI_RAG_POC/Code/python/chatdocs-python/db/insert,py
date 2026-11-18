@@ -1,0 +1,25 @@
+vector_string = "[" + ",".join(
+    map(str, embedding)
+) + "]"
+
+cursor.execute(
+    """
+    INSERT INTO DOCUMENT_STORE
+    (
+       FILE_NAME,
+       CONTENT,
+       EMBEDDING
+    )
+    VALUES
+    (
+       :1,
+       :2,
+       TO_VECTOR(:3)
+    )
+    """,
+    [
+        file_name,
+        content,
+        vector_string
+    ]
+)
